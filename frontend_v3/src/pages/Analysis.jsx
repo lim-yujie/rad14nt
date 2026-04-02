@@ -327,7 +327,7 @@ export default function Analysis() {
 
         {/* Offline warning */}
         <AnimatePresence>
-          {selectedOnline === false && uploadedImage && (
+          {selectedOnline === false && uploadedImage && Object.keys(health).length > 0 && (
             <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
               className="flex items-center gap-3 mb-6 px-4 py-3 rounded-xl bg-amber-500/8 border border-amber-400/30 text-amber-700 dark:text-amber-400 font-inter text-sm">
               <AlertTriangle className="w-4 h-4 shrink-0" />
@@ -368,7 +368,7 @@ export default function Analysis() {
                 <Button
                   onClick={handleAnalyze}
                   size="lg"
-                  disabled={selectedOnline === false}
+                  disabled={false}
                   className="w-full h-14 rounded-2xl font-space text-base font-semibold bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-lg shadow-primary/20 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Scan className="w-5 h-5 mr-3" /> Run Analysis

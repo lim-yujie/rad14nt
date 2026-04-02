@@ -2,14 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FlaskConical, ChevronDown, ChevronUp } from "lucide-react";
 
-const PORTS = {
-  resnet50:    5001,
-  efficientnet:5002,
-  convnext:    5003,
-  swin:        5004,
-  raddino:     5005,
-  radjepa:     5006,
-};
+const BASE_URL = (import.meta.env.VITE_API_URL || "http://localhost:5000").replace(/\/$/, "");
 
 const SAMPLES = [
   { label: "Atelectasis",        file: "00000030_001.png" },
@@ -31,12 +24,8 @@ const SAMPLES = [
 export default function SampleGallery({ onSelect, selectedModel }) {
   const [open, setOpen] = useState(false);
 
-  // Use the first online port we can find, falling back through the port list
-  const port = PORTS[selectedModel] ?? Object.values(PORTS)[0];
-  const baseUrl = `http://localhost:${port}`;
-
   const handleSelect = async (sample) => {
-    const url = `${baseUrl}/samples/${sample.file}`;
+    const url = `${BASE_URL}/samples/${sample.file}`;
     try {
       const res = await fetch(url);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -88,7 +77,7 @@ export default function SampleGallery({ onSelect, selectedModel }) {
               >
                 <div className="w-full aspect-square rounded-lg overflow-hidden bg-foreground/5 border border-border">
                   <img
-                    src={`${baseUrl}/samples/${sample.file}`}
+                    src={`${BASE_URL}/samples/${sample.file}`}
                     alt={sample.label}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 filter grayscale"
                   />
