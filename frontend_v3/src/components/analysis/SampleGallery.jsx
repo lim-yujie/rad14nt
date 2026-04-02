@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FlaskConical, ChevronDown, ChevronUp } from "lucide-react";
 
-const BASE_URL = (import.meta.env.VITE_API_URL || "http://localhost:5000").replace(/\/$/, "");
+const BASE_URL = (import.meta.env.VITE_API_URL || "https://rad14nt-backend.onrender.com").replace(/\/$/, "");
 
 const SAMPLES = [
   { label: "Atelectasis",        file: "00000030_001.png" },
