@@ -9,7 +9,7 @@ import ImageUploader from "../components/analysis/ImageUploader";
 import ResultsPanel from "../components/analysis/ResultsPanel";
 import HeatmapViewer from "../components/analysis/HeatmapViewer";
 import SampleGallery from "../components/analysis/SampleGallery";
-import { predict, explain, fetchAllHealth } from "@/lib/api";
+import { predict, explain, fetchAllHealth } from "@/lib/api.js";
 
 // ── Model registry ────────────────────────────────────────────────────────────
 const MODELS = [
